@@ -1,0 +1,97 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+env/
+myenv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
+
+# If you're using PyCharm:
+.idea/
+
+# If you're using Visual Studio Code:
+.vscode/
+
+# If you're using Sublime Text:
+*.sublime-project
+*.sublime-workspace
+
+# If you're using Jupyter Notebook:
+.ipynb_checkpoints
+
+# Coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+*.pytest_cache/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+test-*.xml
+.jest/
+
+# Translations
+*.mo
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# mypy
+.mypy_cache/
+
+# Environments
+.env
+.venv
+ENV/
+env/
+venv/
+ENV.bak/
+venv.bak/
+.env.local
+.env.development
+.env.production
+.env.test
+.env.*
+*.env
+
+# Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+*.swp
+.swo
+
+# Pytest
+.pytest_cache/
