@@ -9,41 +9,16 @@ class TemplateChoices(models.TextChoices):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-        related_name='profile'
-    )
-    
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+
     name = models.CharField(
         max_length=100,
     )
-    
+
     bio = models.TextField(
         blank=True,
     )
-    
-    emplate_choice = models.CharField(
-        max_length=100,
-        choices=TemplateChoices.choices,
-        default=TemplateChoices.TEMPLATE1,
-    )
-    
-    class Profile(models.Model):
-    user = models.OneToOneField(
-        User,
-        on_delete=models.CASCADE,
-        related_name='profile'
-    )
-    
-    name = models.CharField(
-        max_length=100,
-    )
-    
-    bio = models.TextField(
-        blank=True,
-    )
-    
+
     template_choice = models.CharField(
         max_length=100,
         choices=TemplateChoices.choices,
@@ -56,4 +31,4 @@ class Profile(models.Model):
     class Meta:
         verbose_name = "Profile"
         verbose_name_plural = "Profiles"
-        ordering = ['user']
+        ordering = ["user"]

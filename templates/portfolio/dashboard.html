@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard - {{ profile.name }}</title>
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">My Portfolio</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'add_experience' %}">Add Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container mt-5">
+            <h1>{{ profile.name }}'s Dashboard</h1>
+            <p>{{ profile.bio }}</p>
+            <h2>Experiences</h2>
+            {% if experiences %}
+                <ul class="list-group">
+                    {% for experience in experiences %}
+                        <li class="list-group-item">
+                            <h3>{{ experience.title }}</h3>
+                            <p>{{ experience.description }}</p>
+                            <small>{{ experience.start_date }} - {{ experience.end_date|default:"Present" }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>You have not added any experiences yet.</p>
+            {% endif %}
+        </div>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    </body>
+</html>

@@ -3,7 +3,7 @@ from django.db import models
 
 class Experience(models.Model):
     profile = models.ForeignKey(
-        "profile.Profile",
+        "portfolio.Profile",
         on_delete=models.CASCADE,
     )
 
