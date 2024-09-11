@@ -9,7 +9,10 @@ class TemplateChoices(models.TextChoices):
 
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
+    user = models.OneToOneField(
+        User,
+        on_delete=models.CASCADE,
+    )
 
     name = models.CharField(
         max_length=100,

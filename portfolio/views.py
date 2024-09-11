@@ -1,7 +1,9 @@
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, CreateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.utils.crypto import get_random_string
+from django.contrib.auth.models import User
+from django.contrib.auth import login
 
 from experience.models import Experience
 from portfolio.forms import ProfileForm
@@ -9,11 +11,7 @@ from portfolio.models import Profile
 
 
 class DashboardView(TemplateView):
-    template_name = "portfolio/dashboard.html"  # Default template name
-
-    def get_template_names(self):
-        profile = Profile.objects.get(user=self.request.user)
-        return [f"portfolio/{profile.template_choice}.html"]
+    template_name = "main/index.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -35,8 +33,16 @@ class CreateProfileView(CreateView):
     success_url = reverse_lazy("dashboard")
 
     def form_valid(self, form):
-        user = self.request.user if self.request.user.is_authenticated else None
-        form.instance.user = user
+        if not self.request.user.is_authenticated:
+            guest_username = "guest_" + get_random_string(length=10)
+            guest_user = User.objects.create_user(
+                username=guest_username, password="guestpassword"
+            )
+
+            login(self.request, guest_user)
+            form.instance.user = guest_user
+        else:
+            form.instance.user = self.request.user
         return super().form_valid(form)
 
 
